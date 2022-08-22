@@ -9,7 +9,7 @@ class Viewer:
         self.canvas.title = 'coPylot viewer'
         self.canvas.show()
 
-        # Set up a viewbox to display the image with interactive pan/zoom
+        # Set up a view to display the image with interactive pan/zoom
         self.view = self.canvas.central_widget.add_view()
 
         self.interpolation = 'nearest'
@@ -32,9 +32,4 @@ class Viewer:
         app.run()
 
     def update(self, data):
-        self.image = scene.visuals.Image(
-            data,
-            interpolation=self.interpolation,
-            parent=self.view.scene,
-            method='subdivide',
-        )
+        self.image.set_data(data)
