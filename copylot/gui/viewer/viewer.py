@@ -12,11 +12,11 @@ class Viewer:
         # Set up a viewbox to display the image with interactive pan/zoom
         self.view = self.canvas.central_widget.add_view()
 
-        interpolation = 'nearest'
+        self.interpolation = 'nearest'
 
         self.image = scene.visuals.Image(
             img_data,
-            interpolation=interpolation,
+            interpolation=self.interpolation,
             parent=self.view.scene,
             method='subdivide',
         )
@@ -32,4 +32,9 @@ class Viewer:
         app.run()
 
     def update(self, data):
-        pass
+        self.image = scene.visuals.Image(
+            data,
+            interpolation=self.interpolation,
+            parent=self.view.scene,
+            method='subdivide',
+        )
