@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
 
         self.threadpool = QThreadPool()
 
-        self.title = "Pisces Parameter Controller"
+        self.title = "coPylot"
         self.version = __version__
 
         self.desktop = QApplication.desktop()
@@ -123,28 +123,23 @@ class MainWindow(QMainWindow):
                 self, self.live_dock, "live_control", [self, self.threadpool]
             )
         )
-        # self.addDockWidget(Qt.RightDockWidgetArea, self.live_dock)
-        #
-        # self.timelapse_widget = TimelapseControl(self, self.threadpool)
+
         self.timelapse_dock.setWidget(
             DockPlaceholder(
                 self, self.timelapse_dock, "timelapse_control", [self, self.threadpool]
             )
         )
-        # self.addDockWidget(Qt.RightDockWidgetArea, self.timelapse_dock)
 
-        # self.water_widget = WaterDispenser(self, self.threadpool)
         self.water_dock.setWidget(
             DockPlaceholder(
                 self, self.water_dock, "water_dispenser", [self, self.threadpool]
             )
         )
-        # self.addDockWidget(Qt.RightDockWidgetArea, self.water_dock)
+
         self.laser_dock.setWidget(
             DockPlaceholder(self, self.laser_dock, "laser", [self])
         )
 
-        # self.parameters_widget = ParametersDockWidget(self)
         self.parameters_placeholder = DockPlaceholder(
             self, self.parameters_dock, "parameters", [self]
         )
@@ -165,7 +160,6 @@ class MainWindow(QMainWindow):
         self.setupMenubar()
 
     def closeEvent(self, event):
-        print("closeEvent of mainwindow is called")
         app = QApplication.instance()
         app.quit()
 

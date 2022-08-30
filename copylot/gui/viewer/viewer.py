@@ -32,5 +32,7 @@ class Viewer:
         app.run()
 
     def update(self, data):
+        print("it is called")
         self.image.set_data(data)
         self.canvas.update()
+        print("it is done")
