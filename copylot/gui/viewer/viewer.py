@@ -33,3 +33,4 @@ class Viewer:
 
     def update(self, data):
         self.image.set_data(data)
+        self.canvas.update()
